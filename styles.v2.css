@@ -505,4 +505,20 @@ a, button, .classic-button, .desktop-icon, .info-item {
     height: 52px;
     object-fit: scale-down;
     background: transparent;
+}
+
+/* Watermark */
+.watermark {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-family: var(--font-mac-pixel);
+    font-size: 14px;
+    color: var(--mac-black);
+    background: var(--mac-white);
+    padding: 8px 12px;
+    border: 1px solid var(--mac-black);
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
 } 
