@@ -74,13 +74,13 @@ body {
     font-size: 12px;
     font-weight: 400;
     padding: 8px;
-    background: var(--mac-white);
     border: 1px solid transparent;
+    background: transparent;
 }
 
 .desktop-icon:hover {
-    background: var(--mac-black);
-    color: var(--mac-white);
+    background: transparent;
+    color: var(--mac-black);
 }
 
 .desktop-icon:active {
@@ -88,15 +88,10 @@ body {
     color: var(--mac-white);
 }
 
-.desktop-icon div {
+.desktop-icon img {
     width: 48px;
     height: 48px;
     margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    filter: none;
 }
 
 .desktop-icon span {
@@ -104,12 +99,13 @@ body {
     word-wrap: break-word;
     line-height: 1.2;
     font-weight: 400;
-    background: var(--mac-white);
+    background: transparent;
     padding: 0 4px;
 }
 
 .desktop-icon:hover span {
     background: var(--mac-black);
+    color: var(--mac-white);
 }
 
 /* Icon Positions */
