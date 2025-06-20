@@ -46,47 +46,47 @@
     </div>
 
     <!-- Desktop Icons -->
-    <div class="desktop-icon icon-finder" ondblclick="alert('Opening Finder...')">
+    <div class="desktop-icon icon-finder" data-action="alert" data-message="Opening Finder...">
         <img src="placeholder.png" alt="Macintosh HD">
         <span>Macintosh HD</span>
     </div>
     
-    <div class="desktop-icon icon-safari" ondblclick="window.open('https://x.com/WilliamZho60181', '_blank')">
+    <div class="desktop-icon icon-safari" data-action="url" data-url="https://x.com/WilliamZho60181">
         <img src="X.png" alt="X" class="x-icon">
         <span>X</span>
     </div>
     
-    <div class="desktop-icon icon-mail" ondblclick="window.open('mailto:william.zhong@example.com', '_blank')">
+    <div class="desktop-icon icon-mail" data-action="url" data-url="mailto:william.zhong@example.com">
         <img src="placeholder.png" alt="Mail">
         <span>Mail</span>
     </div>
     
-    <div class="desktop-icon icon-itunes" ondblclick="window.open('https://open.spotify.com/playlist/0S142yKxglv6znajJMTcuB?si=2a4ddec716ae4433&pt=a61b14f96b33935f9f798f81a5782ffe', '_blank')">
+    <div class="desktop-icon icon-itunes" data-action="url" data-url="https://open.spotify.com/playlist/0S142yKxglv6znajJMTcuB?si=2a4ddec716ae4433&pt=a61b14f96b33935f9f798f81a5782ffe">
         <img src="spotify.png" alt="Music" class="spotify-icon">
         <span>Music</span>
     </div>
     
-    <div class="desktop-icon icon-photoshop" ondblclick="window.open('https://www.adobe.com', '_blank')">
+    <div class="desktop-icon icon-photoshop" data-action="url" data-url="https://www.adobe.com">
         <img src="placeholder.png" alt="Photoshop">
         <span>Photoshop</span>
     </div>
     
-    <div class="desktop-icon icon-terminal" ondblclick="alert('Opening Terminal...')">
+    <div class="desktop-icon icon-terminal" data-action="alert" data-message="Opening Terminal...">
         <img src="placeholder.png" alt="Terminal">
         <span>Terminal</span>
     </div>
     
-    <div class="desktop-icon icon-xcode" ondblclick="window.open('https://developer.apple.com', '_blank')">
+    <div class="desktop-icon icon-xcode" data-action="url" data-url="https://developer.apple.com">
         <img src="placeholder.png" alt="Xcode">
         <span>Xcode</span>
     </div>
     
-    <div class="desktop-icon icon-github" ondblclick="window.open('https://github.com/genesisband', '_blank')">
+    <div class="desktop-icon icon-github" data-action="url" data-url="https://github.com/genesisband">
         <img src="github.png" alt="GitHub">
         <span>GitHub</span>
     </div>
 
-    <div class="desktop-icon icon-notes" ondblclick="openWindow('notes-window')">
+    <div class="desktop-icon icon-notes" data-action="window" data-window="notes-window">
         <img src="notes.png" alt="Notes">
         <span>Notes</span>
     </div>
@@ -95,7 +95,7 @@
     <div class="mac-window about-window" id="about-window">
         <div class="window-titlebar" id="window-titlebar">
             <div class="window-controls">
-                <div class="window-control close" onclick="closeWindow('about-window')"></div>
+                <div class="window-control close"></div>
             </div>
             <div class="window-title">About This Macintosh</div>
         </div>
@@ -129,7 +129,7 @@
     <div class="mac-window notes-window" id="notes-window">
         <div class="window-titlebar" id="notes-titlebar">
             <div class="window-controls">
-                <div class="window-control close" onclick="closeWindow('notes-window')"></div>
+                <div class="window-control close"></div>
             </div>
             <div class="window-title">Notes</div>
         </div>
@@ -236,6 +236,29 @@ You can type stuff here!</textarea>
             }
         }
 
+        // Add touch support for close buttons
+        document.querySelectorAll('.window-control.close').forEach(closeBtn => {
+            // Mouse click support
+            closeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const window = this.closest('.mac-window');
+                if (window) {
+                    closeWindow(window.id);
+                }
+            });
+            
+            // Touch support
+            closeBtn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const window = this.closest('.mac-window');
+                if (window) {
+                    closeWindow(window.id);
+                }
+            });
+        });
+
         // Open window function
         function openWindow(windowId) {
             const window = document.getElementById(windowId);
@@ -249,16 +272,75 @@ You can type stuff here!</textarea>
             }
         }
 
-        // Desktop icon click effects
+        // Desktop icon interactions - handle both mouse and touch
         document.querySelectorAll('.desktop-icon').forEach(icon => {
-            icon.addEventListener('click', function() {
-                // Add a brief visual feedback
+            let clickCount = 0;
+            let clickTimer = null;
+            
+            // Handle mouse double-click
+            icon.addEventListener('dblclick', function(e) {
+                e.preventDefault();
+                handleIconAction(this);
+            });
+            
+            // Handle touch events for mobile
+            icon.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                clickCount++;
+                
+                if (clickCount === 1) {
+                    // Single tap - add visual feedback
+                    this.style.transform = 'scale(0.95)';
+                    
+                    // Set timer for double-tap detection
+                    clickTimer = setTimeout(() => {
+                        clickCount = 0;
+                        this.style.transform = 'scale(1)';
+                    }, 300);
+                } else if (clickCount === 2) {
+                    // Double tap detected
+                    clearTimeout(clickTimer);
+                    clickCount = 0;
+                    this.style.transform = 'scale(1)';
+                    handleIconAction(this);
+                }
+            });
+            
+            // Handle mouse click for visual feedback
+            icon.addEventListener('click', function(e) {
+                // Add visual feedback for single click
                 this.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     this.style.transform = 'scale(1)';
                 }, 150);
             });
         });
+        
+        // Function to handle icon actions
+        function handleIconAction(icon) {
+            const action = icon.getAttribute('data-action');
+            const url = icon.getAttribute('data-url');
+            const message = icon.getAttribute('data-message');
+            const windowId = icon.getAttribute('data-window');
+            
+            switch(action) {
+                case 'url':
+                    if (url) {
+                        window.open(url, '_blank');
+                    }
+                    break;
+                case 'alert':
+                    if (message) {
+                        alert(message);
+                    }
+                    break;
+                case 'window':
+                    if (windowId) {
+                        openWindow(windowId);
+                    }
+                    break;
+            }
+        }
 
         // Menu bar interactions
         document.querySelectorAll('.menu-item').forEach(item => {
@@ -283,8 +365,13 @@ You can type stuff here!</textarea>
                 return;
             }
             
+            // Allow desktop icon interactions
+            if (e.target.closest('.desktop-icon')) {
+                return;
+            }
+            
             // Prevent zoom on other interactive elements
-            if (e.target.closest('.desktop-icon') || e.target.closest('.mac-window')) {
+            if (e.target.closest('.mac-window')) {
                 e.preventDefault();
             }
         }, { passive: false });
