@@ -26,11 +26,17 @@
     --window-title-lines: repeating-linear-gradient(
         0deg,
         var(--mac-white) 0px,
-        var(--mac-white) 2px,
+        var(--mac-white) 1px,
+        var(--mac-black) 1px,
         var(--mac-black) 2px,
-        var(--mac-black) 3px,
+        var(--mac-white) 2px,
         var(--mac-white) 3px,
-        var(--mac-white) 4px
+        var(--mac-black) 3px,
+        var(--mac-black) 4px,
+        var(--mac-white) 4px,
+        var(--mac-white) 5px,
+        var(--mac-black) 5px,
+        var(--mac-black) 6px
     );
     --window-shadow: 2px 2px 0px var(--mac-black);
     
@@ -80,6 +86,7 @@ body {
     image-rendering: pixelated;
     -webkit-overflow-scrolling: touch;
     touch-action: none;
+    font-weight: bold;
 }
 
 /* Desktop Icons */
@@ -95,7 +102,7 @@ body {
     text-align: center;
     color: var(--mac-black);
     font-size: 12px;
-    font-weight: 400;
+    font-weight: bold;
     padding: 8px;
     border: 1px solid transparent;
     background: transparent;
@@ -124,7 +131,7 @@ body {
     max-width: 80px;
     word-wrap: break-word;
     line-height: 1.2;
-    font-weight: 400;
+    font-weight: bold;
     background: transparent;
     padding: 0 4px;
 }
@@ -159,7 +166,6 @@ body {
 
 .window-titlebar {
     background: var(--window-bg);
-    background-image: var(--window-title-lines);
     height: 22px;
     display: flex;
     align-items: center;
@@ -171,6 +177,18 @@ body {
     position: relative;
 }
 
+.window-titlebar::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 12px;
+    background-image: var(--window-title-lines);
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
 .window-controls {
     position: absolute;
     left: 6px;
@@ -178,6 +196,7 @@ body {
     transform: translateY(-50%);
     display: flex;
     gap: 0;
+    z-index: 3;
 }
 
 .window-control {
@@ -187,6 +206,7 @@ body {
     background: var(--mac-white);
     cursor: pointer;
     position: relative;
+    z-index: 3;
 }
 
 .window-control.close:active::before {
@@ -207,14 +227,15 @@ body {
 .window-title {
     font-family: var(--font-mac-pixel);
     font-size: 12px;
-    font-weight: 400;
+    font-weight: bold;
     color: var(--mac-black);
     text-align: center;
     background: var(--mac-white);
-    padding: 0 4px;
+    padding: 2px 6px;
     position: relative;
     z-index: 2;
     display: inline-block;
+    line-height: 1.2;
 }
 
 .window-content {
@@ -381,6 +402,7 @@ body {
     align-items: center;
     padding: 0 10px;
     font-size: 14px;
+    font-weight: bold;
     color: var(--mac-black);
     z-index: 1000;
     box-shadow: none;
@@ -399,7 +421,7 @@ body {
 .menu-item {
     margin-right: 20px;
     cursor: pointer;
-    font-weight: 400;
+    font-weight: bold;
     padding: 2px 6px;
     border: 1px solid transparent;
 }
