@@ -40,6 +40,9 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 body {
@@ -49,7 +52,7 @@ body {
     background-color: var(--desktop-bg);
     background-image: var(--desktop-pattern);
     background-size: 2px 2px;
-    overflow-x: hidden;
+    overflow: hidden;
     cursor: default;
     min-height: 100vh;
     position: relative;
@@ -57,6 +60,7 @@ body {
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
     image-rendering: pixelated;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Desktop Icons */
@@ -460,20 +464,32 @@ p {
         height: 32px;
         font-size: 16px;
         padding: 0 8px;
-        overflow-x: auto;
+        overflow-x: scroll;
         overflow-y: hidden;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .menu-bar::-webkit-scrollbar {
+        display: none;
     }
     
     .menu-item {
         margin-right: 12px;
         padding: 4px 8px;
         flex-shrink: 0;
+        display: inline-block;
     }
     
     .apple-menu {
         font-size: 20px;
+    }
+    
+    .menu-right {
+        flex-shrink: 0;
+        margin-left: auto;
     }
     
     .time {
@@ -557,12 +573,14 @@ p {
         text-align: center;
     }
     
-    /* Mobile watermark */
+    /* Mobile watermark - fixed positioning */
     .watermark {
         font-size: 12px;
         padding: 6px 10px;
         bottom: 15px;
         right: 15px;
+        position: fixed;
+        z-index: 1;
     }
     
     /* Mobile notes window */
@@ -587,16 +605,23 @@ p {
     .menu-bar {
         height: 36px;
         font-size: 18px;
-        overflow-x: auto;
+        overflow-x: scroll;
         overflow-y: hidden;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .menu-bar::-webkit-scrollbar {
+        display: none;
     }
     
     .menu-item {
         margin-right: 8px;
         padding: 6px 10px;
         flex-shrink: 0;
+        display: inline-block;
     }
     
     .desktop-icon {
@@ -647,11 +672,14 @@ p {
         height: 180px;
     }
     
+    /* Small mobile watermark - fixed positioning */
     .watermark {
         font-size: 11px;
         padding: 5px 8px;
         bottom: 10px;
         right: 10px;
+        position: fixed;
+        z-index: 1;
     }
     
     .notes-textarea {
