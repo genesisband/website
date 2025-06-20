@@ -508,11 +508,11 @@ p {
     .icon-github { top: 300px; right: 95px; }
     .icon-notes { top: 45px; right: 180px; }
     
-    /* Proportional close window button - smaller and circular */
+    /* Proportional close window button - small square */
     .window-control {
         width: 12px;
         height: 12px;
-        border-radius: 50%;
+        border-radius: 0;
         border-width: 2px;
     }
     .window-control.close:active::before {
@@ -521,11 +521,11 @@ p {
         top: 2px;
         left: 2px;
     }
-    /* App icon and menu bar active/click effect */
+    /* App icon and menu bar active/click effect - square */
     .desktop-icon:active, .desktop-icon.active {
         background: var(--mac-black);
         color: var(--mac-white);
-        border-radius: 6px;
+        border-radius: 0;
     }
     .desktop-icon:active img, .desktop-icon.active img {
         filter: invert(1);
@@ -536,7 +536,7 @@ p {
     .menu-item:active, .menu-item.active {
         background: var(--mac-black);
         color: var(--mac-white);
-        border-radius: 4px;
+        border-radius: 0;
     }
 }
 
@@ -560,11 +560,11 @@ p {
         margin-bottom: 6px;
     }
     
-    /* Even smaller close window button for small mobile */
+    /* Even smaller close window button for small mobile - square */
     .window-control {
         width: 10px;
         height: 10px;
-        border-radius: 50%;
+        border-radius: 0;
         border-width: 2px;
     }
     .window-control.close:active::before {
@@ -572,6 +572,13 @@ p {
         height: 5px;
         top: 2px;
         left: 2px;
+    }
+    /* App icon and menu bar active/click effect - square */
+    .desktop-icon:active, .desktop-icon.active {
+        border-radius: 0;
+    }
+    .menu-item:active, .menu-item.active {
+        border-radius: 0;
     }
 }
 
