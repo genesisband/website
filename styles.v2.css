@@ -78,14 +78,13 @@ body {
     background: transparent;
 }
 
-.desktop-icon:hover {
-    background: transparent;
-    color: var(--mac-black);
-}
-
 .desktop-icon:active {
     background: var(--mac-black);
     color: var(--mac-white);
+}
+
+.desktop-icon:active img {
+    filter: invert(1);
 }
 
 .desktop-icon img {
