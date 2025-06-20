@@ -66,9 +66,9 @@
         <span>Music</span>
     </div>
     
-    <div class="desktop-icon icon-photoshop" data-action="url" data-url="https://www.adobe.com">
-        <img src="placeholder.png" alt="Photoshop">
-        <span>Photoshop</span>
+    <div class="desktop-icon icon-photoshop" data-action="window" data-window="pokemon-window">
+        <img src="placeholder.png" alt="Pokémon">
+        <span>Pokémon</span>
     </div>
     
     <div class="desktop-icon icon-terminal" data-action="alert" data-message="Opening Terminal...">
@@ -140,6 +140,21 @@
 - Java, C/C++
 
 You can type stuff here!</textarea>
+        </div>
+    </div>
+
+    <!-- Pokémon Window -->
+    <div class="mac-window pokemon-window" id="pokemon-window">
+        <div class="window-titlebar" id="pokemon-titlebar">
+            <div class="window-controls">
+                <div class="window-control close"></div>
+            </div>
+            <div class="window-title">Pokémon</div>
+        </div>
+        <div class="window-content">
+            <div class="pokemon-content">
+                <img src="pokemon.gif" alt="Pokémon Animation" class="pokemon-gif">
+            </div>
         </div>
     </div>
 
@@ -428,8 +443,14 @@ You can type stuff here!</textarea>
 
             // Position the "Notes" window on load
             const notesWindow = document.getElementById('notes-window');
-            notesWindow.style.left = 'calc(60vw - 350px)'; // 90% from left edge minus window width
-            notesWindow.style.top = '40vh';
+            notesWindow.style.left = 'calc(75vw - 350px)'; // 90% from left edge minus window width
+            notesWindow.style.top = '35vh';
+            
+            // Position and open the "Pokémon" window on load
+            const pokemonWindow = document.getElementById('pokemon-window');
+            pokemonWindow.style.left = 'calc(45vw - 200px)'; // Center-ish position
+            pokemonWindow.style.top = '66vh';
+            openWindow('pokemon-window');
         });
 
         // Add window focus effect
