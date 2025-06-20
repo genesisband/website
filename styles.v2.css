@@ -508,18 +508,26 @@ p {
     .icon-github { top: 300px; right: 95px; }
     .icon-notes { top: 45px; right: 180px; }
     
-    /* Proportional close window button - smaller square */
+    /* Proportional close window button - scalable square */
     .window-control {
-        width: 9px;
-        height: 9px;
+        width: 1.2em;
+        height: 1.2em;
+        min-width: 0.9em;
+        min-height: 0.9em;
+        max-width: 1.5em;
+        max-height: 1.5em;
         border-radius: 0;
         border-width: 2px;
     }
     .window-control.close:active::before {
-        width: 5px;
-        height: 5px;
-        top: 2px;
-        left: 2px;
+        width: 0.6em;
+        height: 0.6em;
+        top: 0.3em;
+        left: 0.3em;
+    }
+    .window-titlebar {
+        height: 2em;
+        font-size: 1em;
     }
     /* App icon and menu bar active/click effect - square */
     .desktop-icon:active, .desktop-icon.active {
@@ -560,18 +568,26 @@ p {
         margin-bottom: 6px;
     }
     
-    /* Even smaller close window button for small mobile - square */
+    /* Even smaller close window button for small mobile - scalable square */
     .window-control {
-        width: 7px;
-        height: 7px;
+        width: 1em;
+        height: 1em;
+        min-width: 0.7em;
+        min-height: 0.7em;
+        max-width: 1.2em;
+        max-height: 1.2em;
         border-radius: 0;
         border-width: 2px;
     }
     .window-control.close:active::before {
-        width: 4px;
-        height: 4px;
-        top: 1.5px;
-        left: 1.5px;
+        width: 0.5em;
+        height: 0.5em;
+        top: 0.25em;
+        left: 0.25em;
+    }
+    .window-titlebar {
+        height: 1.7em;
+        font-size: 0.95em;
     }
     /* App icon and menu bar active/click effect - square */
     .desktop-icon:active, .desktop-icon.active {
