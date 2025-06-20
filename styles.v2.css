@@ -93,6 +93,10 @@ body {
     margin-bottom: 8px;
 }
 
+.spotify-icon {
+    background: transparent;
+}
+
 .desktop-icon span {
     max-width: 80px;
     word-wrap: break-word;
@@ -375,6 +379,10 @@ p {
     line-height: 1.4;
 }
 
+.language-item {
+    text-indent: 1em;
+}
+
 /* Classic Scrollbar */
 ::-webkit-scrollbar {
     width: 16px;
@@ -468,4 +476,11 @@ a, button, .classic-button, .desktop-icon, .info-item {
 
 .notes-textarea:focus {
     outline: none;
+}
+
+.x-icon {
+    width: 52px;
+    height: 52px;
+    object-fit: scale-down;
+    background: transparent;
 } 
