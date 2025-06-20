@@ -276,6 +276,7 @@ You can type stuff here!</textarea>
         document.querySelectorAll('.desktop-icon').forEach(icon => {
             let clickCount = 0;
             let clickTimer = null;
+            let lastTapTime = 0;
             
             // Handle mouse double-click
             icon.addEventListener('dblclick', function(e) {
@@ -284,12 +285,20 @@ You can type stuff here!</textarea>
             });
             
             // Handle touch events for mobile
-            icon.addEventListener('touchstart', function(e) {
+            icon.addEventListener('touchend', function(e) {
                 e.preventDefault();
-                clickCount++;
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTapTime;
                 
-                if (clickCount === 1) {
-                    // Single tap - add visual feedback
+                if (tapLength < 500 && tapLength > 0) {
+                    // Double tap detected
+                    clearTimeout(clickTimer);
+                    clickCount = 0;
+                    this.style.transform = 'scale(1)';
+                    handleIconAction(this);
+                } else {
+                    // Single tap
+                    clickCount++;
                     this.style.transform = 'scale(0.95)';
                     
                     // Set timer for double-tap detection
@@ -297,13 +306,9 @@ You can type stuff here!</textarea>
                         clickCount = 0;
                         this.style.transform = 'scale(1)';
                     }, 300);
-                } else if (clickCount === 2) {
-                    // Double tap detected
-                    clearTimeout(clickTimer);
-                    clickCount = 0;
-                    this.style.transform = 'scale(1)';
-                    handleIconAction(this);
                 }
+                
+                lastTapTime = currentTime;
             });
             
             // Handle mouse click for visual feedback
@@ -341,6 +346,39 @@ You can type stuff here!</textarea>
                     break;
             }
         }
+        
+        // Info button interactions for mobile
+        document.querySelectorAll('.info-item').forEach(infoBtn => {
+            // Handle mouse click
+            infoBtn.addEventListener('click', function(e) {
+                // Add visual feedback
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+            
+            // Handle touch events for mobile
+            infoBtn.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                
+                // Add visual feedback
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+                
+                // Get the href and open the link
+                const href = this.getAttribute('href');
+                if (href) {
+                    if (href.startsWith('mailto:')) {
+                        window.location.href = href;
+                    } else {
+                        window.open(href, '_blank');
+                    }
+                }
+            });
+        });
 
         // Menu bar interactions
         document.querySelectorAll('.menu-item').forEach(item => {
@@ -367,6 +405,11 @@ You can type stuff here!</textarea>
             
             // Allow desktop icon interactions
             if (e.target.closest('.desktop-icon')) {
+                return;
+            }
+            
+            // Allow info button interactions
+            if (e.target.closest('.info-item')) {
                 return;
             }
             

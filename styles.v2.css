@@ -753,6 +753,9 @@ p {
         min-height: 44px;
         display: flex;
         align-items: center;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
     }
     
     /* Disable hover effects on touch devices */
