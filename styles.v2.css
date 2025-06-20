@@ -1,6 +1,14 @@
 /* Classic Mac OS (System 7.5.5) Black and White Theme CSS */
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
 
+@font-face {
+  font-family: 'Sysfont';
+  src: url('sysfont.woff2') format('woff2'),
+  url('sysfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* CSS Custom Properties for Classic Mac OS B&W Theme */
 :root {
     /* Classic Mac OS B&W Colors */
@@ -24,7 +32,7 @@
     --window-shadow: 2px 2px 0px var(--mac-black);
     
     /* Typography */
-    --font-mac-pixel: 'Silkscreen', 'Geneva', 'Helvetica', 'Arial', sans-serif;
+    --font-mac-pixel: 'Sysfont', 'Geneva', 'Helvetica', 'Arial', sans-serif;
     
     /* Transitions */
     --transition-classic: none; /* No transitions for retro feel */
