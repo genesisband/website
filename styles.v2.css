@@ -508,16 +508,16 @@ p {
     .icon-github { top: 300px; right: 95px; }
     .icon-notes { top: 45px; right: 180px; }
     
-    /* Proportional close window button - small square */
+    /* Proportional close window button - smaller square */
     .window-control {
-        width: 12px;
-        height: 12px;
+        width: 9px;
+        height: 9px;
         border-radius: 0;
         border-width: 2px;
     }
     .window-control.close:active::before {
-        width: 6px;
-        height: 6px;
+        width: 5px;
+        height: 5px;
         top: 2px;
         left: 2px;
     }
@@ -562,16 +562,16 @@ p {
     
     /* Even smaller close window button for small mobile - square */
     .window-control {
-        width: 10px;
-        height: 10px;
+        width: 7px;
+        height: 7px;
         border-radius: 0;
         border-width: 2px;
     }
     .window-control.close:active::before {
-        width: 5px;
-        height: 5px;
-        top: 2px;
-        left: 2px;
+        width: 4px;
+        height: 4px;
+        top: 1.5px;
+        left: 1.5px;
     }
     /* App icon and menu bar active/click effect - square */
     .desktop-icon:active, .desktop-icon.active {
