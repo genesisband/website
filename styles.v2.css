@@ -644,15 +644,26 @@ p {
 
 /* Touch-friendly interactions */
 @media (hover: none) and (pointer: coarse) {
+    /* Mobile devices with touch - force small close button */
+    .window-control {
+        width: 8px !important;
+        height: 8px !important;
+        border-width: 1px !important;
+        border-radius: 0 !important;
+    }
+    
+    .window-control.close:active::before {
+        width: 4px !important;
+        height: 4px !important;
+        top: 2px !important;
+        left: 2px !important;
+        transform: none !important;
+    }
+    
     /* Increase touch targets */
     .desktop-icon {
         min-height: 44px;
         padding: 8px;
-    }
-    
-    .window-control {
-        min-width: 44px;
-        min-height: 44px;
     }
     
     .menu-item {
