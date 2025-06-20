@@ -316,20 +316,20 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 22px;
+    height: 26px;
     background: var(--mac-white);
     border-bottom: 2px solid var(--mac-black);
     display: flex;
     align-items: center;
-    padding: 0 8px;
-    font-size: 12px;
+    padding: 0 10px;
+    font-size: 14px;
     color: var(--mac-black);
     z-index: 1000;
     box-shadow: none;
 }
 
 .menu-item {
-    margin-right: 16px;
+    margin-right: 20px;
     cursor: pointer;
     font-weight: 400;
     padding: 2px 6px;
@@ -344,7 +344,7 @@ body {
 
 .apple-menu {
     font-weight: 400;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .menu-right {
@@ -355,7 +355,7 @@ body {
 }
 
 .time {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 /* Typography */
