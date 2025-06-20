@@ -508,14 +508,35 @@ p {
     .icon-github { top: 300px; right: 95px; }
     .icon-notes { top: 45px; right: 180px; }
     
-    /* Proportional close window button */
+    /* Proportional close window button - smaller and circular */
     .window-control {
-        width: 18px;
-        height: 18px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border-width: 2px;
     }
-    .window-titlebar {
-        height: 30px;
-        font-size: 15px;
+    .window-control.close:active::before {
+        width: 6px;
+        height: 6px;
+        top: 2px;
+        left: 2px;
+    }
+    /* App icon and menu bar active/click effect */
+    .desktop-icon:active, .desktop-icon.active {
+        background: var(--mac-black);
+        color: var(--mac-white);
+        border-radius: 6px;
+    }
+    .desktop-icon:active img, .desktop-icon.active img {
+        filter: invert(1);
+    }
+    .desktop-icon:active span, .desktop-icon.active span {
+        color: var(--mac-white);
+    }
+    .menu-item:active, .menu-item.active {
+        background: var(--mac-black);
+        color: var(--mac-white);
+        border-radius: 4px;
     }
 }
 
@@ -539,14 +560,18 @@ p {
         margin-bottom: 6px;
     }
     
-    /* Small mobile close window button */
+    /* Even smaller close window button for small mobile */
     .window-control {
-        width: 15px;
-        height: 15px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border-width: 2px;
     }
-    .window-titlebar {
-        height: 28px;
-        font-size: 14px;
+    .window-control.close:active::before {
+        width: 5px;
+        height: 5px;
+        top: 2px;
+        left: 2px;
     }
 }
 
@@ -758,4 +783,19 @@ a, button, .classic-button, .desktop-icon, .info-item {
 .pokemon-gif {
     max-width: 100%;
     max-height: 100%;
+}
+
+/* Universal: ensure .active class works for JS click/tap feedback */
+.desktop-icon.active, .menu-item.active {
+    background: var(--mac-black) !important;
+    color: var(--mac-white) !important;
+}
+.desktop-icon.active img {
+    filter: invert(1);
+}
+.desktop-icon.active span {
+    color: var(--mac-white) !important;
+}
+.menu-item.active {
+    color: var(--mac-white) !important;
 } 

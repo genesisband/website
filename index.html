@@ -305,33 +305,30 @@ You can type stuff here!</textarea>
                 const tapLength = currentTime - lastTapTime;
                 
                 if (tapLength < 500 && tapLength > 0) {
-                    // Double tap detected
                     clearTimeout(clickTimer);
                     clickCount = 0;
-                    this.style.transform = 'scale(1)';
+                    this.classList.remove('active');
                     handleIconAction(this);
                 } else {
-                    // Single tap
                     clickCount++;
-                    this.style.transform = 'scale(0.95)';
-                    
-                    // Set timer for double-tap detection
+                    this.classList.add('active');
                     clickTimer = setTimeout(() => {
                         clickCount = 0;
-                        this.style.transform = 'scale(1)';
+                        this.classList.remove('active');
                     }, 300);
                 }
-                
                 lastTapTime = currentTime;
             });
             
             // Handle mouse click for visual feedback
-            icon.addEventListener('click', function(e) {
-                // Add visual feedback for single click
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
-                }, 150);
+            icon.addEventListener('mousedown', function(e) {
+                this.classList.add('active');
+            });
+            icon.addEventListener('mouseup', function(e) {
+                this.classList.remove('active');
+            });
+            icon.addEventListener('mouseleave', function(e) {
+                this.classList.remove('active');
             });
         });
         
@@ -391,6 +388,25 @@ You can type stuff here!</textarea>
                         window.open(href, '_blank');
                     }
                 }
+            });
+        });
+
+        // Menu bar item feedback
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('touchstart', function() {
+                this.classList.add('active');
+            });
+            item.addEventListener('touchend', function() {
+                this.classList.remove('active');
+            });
+            item.addEventListener('mousedown', function() {
+                this.classList.add('active');
+            });
+            item.addEventListener('mouseup', function() {
+                this.classList.remove('active');
+            });
+            item.addEventListener('mouseleave', function() {
+                this.classList.remove('active');
             });
         });
 
