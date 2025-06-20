@@ -92,8 +92,8 @@ body {
 /* Desktop Icons */
 .desktop-icon {
     position: absolute;
-    width: 90px;
-    height: 100px;
+    width: 100px;
+    height: 110px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,7 +101,7 @@ body {
     cursor: pointer;
     text-align: center;
     color: var(--mac-black);
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     padding: 8px;
     border: 1px solid transparent;
@@ -118,17 +118,18 @@ body {
 }
 
 .desktop-icon img {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     margin-bottom: 8px;
 }
 
 .spotify-icon {
-    background: transparent;
+    width: 56px;
+    height: 56px;
 }
 
 .desktop-icon span {
-    max-width: 80px;
+    max-width: 90px;
     word-wrap: break-word;
     line-height: 1.2;
     font-weight: bold;
@@ -213,16 +214,28 @@ body {
 .window-control.close:active::before {
     content: '';
     position: absolute;
-    top: 2px;
-    left: 2px;
+    top: 50%;
+    left: 50%;
     width: 6px;
-    height: 6px;
+    height: 1px;
     background: var(--mac-black);
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .window-control.minimize,
 .window-control.maximize {
     display: none; /* Not present in the reference image */
+}
+
+.window-control.close:active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 1px;
+    background: var(--mac-black);
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .window-title {
@@ -326,14 +339,14 @@ body {
 }
 
 .profile-name {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     color: var(--mac-black);
     margin-bottom: 4px;
 }
 
 .profile-title {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--mac-black);
     margin-bottom: 15px;
 }
@@ -342,7 +355,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: auto;
+    margin-top: 12px;
 }
 
 .info-item {
@@ -378,7 +391,7 @@ body {
 }
 
 .info-text {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
 }
 
@@ -463,8 +476,8 @@ h3 { font-size: 14px; }
 
 p {
     color: var(--mac-black);
-    margin-bottom: 8px;
-    font-size: 12px;
+    margin-bottom: 6px;
+    font-size: 14px;
     line-height: 1.4;
 }
 
@@ -524,14 +537,14 @@ p {
     
     /* Make app icons and text larger */
     .desktop-icon {
-        width: 72px;
-        height: 84px;
-        font-size: 13px;
+        width: 80px;
+        height: 92px;
+        font-size: 14px;
         padding: 7px;
     }
     .desktop-icon img {
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
         margin-bottom: 7px;
     }
     
@@ -558,15 +571,14 @@ p {
         border-width: 1px;
     }
     .window-control.close:active::before {
-        width: 0.8vw;
-        height: 0.8vw;
-        min-width: 3px;
-        min-height: 3px;
-        max-width: 4px;
-        max-height: 4px;
+        content: '';
+        position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        width: 6px;
+        height: 1px;
+        background: var(--mac-black);
+        transform: translate(-50%, -50%) rotate(45deg);
     }
     .window-titlebar {
         height: 2em;
@@ -589,6 +601,10 @@ p {
         color: var(--mac-white);
         border-radius: 0;
     }
+    .spotify-icon {
+        width: 48px;
+        height: 48px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -600,14 +616,14 @@ p {
     
     /* Make app icons and text larger for small mobile */
     .desktop-icon {
-        width: 62px;
-        height: 72px;
-        font-size: 12px;
+        width: 70px;
+        height: 80px;
+        font-size: 13px;
         padding: 6px;
     }
     .desktop-icon img {
-        width: 34px;
-        height: 34px;
+        width: 38px;
+        height: 38px;
         margin-bottom: 6px;
     }
     
@@ -623,15 +639,24 @@ p {
         border-width: 1px;
     }
     .window-control.close:active::before {
-        width: 1vw;
-        height: 1vw;
-        min-width: 2px;
-        min-height: 2px;
-        max-width: 3px;
-        max-height: 3px;
+        content: '';
+        position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        width: 6px;
+        height: 1px;
+        background: var(--mac-black);
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .window-control.close:active::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6px;
+        height: 1px;
+        background: var(--mac-black);
+        transform: translate(-50%, -50%) rotate(-45deg);
     }
     .window-titlebar {
         height: 1.7em;
@@ -644,20 +669,24 @@ p {
     .menu-item:active, .menu-item.active {
         border-radius: 0;
     }
+    .spotify-icon {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 /* Extra small mobile devices */
 @media (max-width: 360px) {
     .desktop-icon {
-        width: 45px;
-        height: 55px;
-        font-size: 8px;
+        width: 50px;
+        height: 60px;
+        font-size: 10px;
         padding: 2px;
     }
     
     .desktop-icon img {
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
         margin-bottom: 2px;
     }
     
@@ -677,6 +706,10 @@ p {
         padding: 4px 6px;
         bottom: 8px;
         right: 8px;
+    }
+    .spotify-icon {
+        width: 30px;
+        height: 30px;
     }
 }
 
@@ -717,13 +750,25 @@ p {
     }
     
     .window-control.close:active::before {
-        width: 4px !important;
-        height: 4px !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        position: absolute !important;
-        background: var(--mac-black) !important;
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6px;
+        height: 1px;
+        background: var(--mac-black);
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    
+    .window-control.close:active::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6px;
+        height: 1px;
+        background: var(--mac-black);
+        transform: translate(-50%, -50%) rotate(-45deg);
     }
     
     /* Increase touch targets */
