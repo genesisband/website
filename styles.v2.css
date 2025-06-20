@@ -670,6 +670,12 @@ p {
         min-height: 44px;
         display: flex;
         align-items: center;
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+        outline: none !important;
+        border: 1px solid transparent !important;
+        background: transparent !important;
     }
     
     .info-item {
@@ -681,21 +687,44 @@ p {
         touch-action: manipulation;
     }
     
-    /* Disable hover effects on touch devices */
+    /* Completely disable hover effects and default styles on touch devices */
     .desktop-icon:hover span {
-        background: transparent;
-        color: var(--mac-black);
+        background: transparent !important;
+        color: var(--mac-black) !important;
     }
     
     .menu-item:hover {
-        background: transparent;
-        color: var(--mac-black);
-        border: 1px solid transparent;
+        background: transparent !important;
+        color: var(--mac-black) !important;
+        border: 1px solid transparent !important;
+        outline: none !important;
+    }
+    
+    .menu-item:focus {
+        background: transparent !important;
+        color: var(--mac-black) !important;
+        border: 1px solid transparent !important;
+        outline: none !important;
+    }
+    
+    .menu-item:active:not(.active) {
+        background: transparent !important;
+        color: var(--mac-black) !important;
+        border: 1px solid transparent !important;
     }
     
     .info-item:hover {
         background: transparent;
         color: var(--mac-black);
+    }
+    
+    /* Ensure only our custom black rectangle shows */
+    .menu-item.active {
+        background: var(--mac-black) !important;
+        color: var(--mac-white) !important;
+        border: 1px solid transparent !important;
+        border-radius: 0 !important;
+        outline: none !important;
     }
 }
 
