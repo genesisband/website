@@ -684,7 +684,7 @@ p {
 @media (hover: none) and (pointer: coarse) {
     /* Adjust window controls positioning for mobile */
     .window-controls {
-        left: 8px;
+        left: 15px;
     }
     
     /* Mobile devices with touch - close button sized to match 6-line pattern with invisible touch area */
