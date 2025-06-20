@@ -152,6 +152,9 @@ You can type stuff here!</textarea>
         let dragOffsetY = 0;
 
         function dragStart(e) {
+            // Handle both mouse and touch events
+            const event = e.type.includes('touch') ? e.touches[0] : e;
+            
             // Only allow dragging from title bar
             if (!e.target.closest('.window-titlebar')) return;
             
@@ -161,10 +164,10 @@ You can type stuff here!</textarea>
             isDragging = true;
             activeWindow = e.target.closest('.mac-window');
             
-            // Calculate offset from mouse to window corner
+            // Calculate offset from pointer to window corner
             const rect = activeWindow.getBoundingClientRect();
-            dragOffsetX = e.clientX - rect.left;
-            dragOffsetY = e.clientY - rect.top;
+            dragOffsetX = event.clientX - rect.left;
+            dragOffsetY = event.clientY - rect.top;
             
             // Add dragging class for visual feedback
             activeWindow.style.cursor = 'move';
@@ -187,9 +190,12 @@ You can type stuff here!</textarea>
             
             e.preventDefault();
             
+            // Handle both mouse and touch events
+            const event = e.type.includes('touch') ? e.touches[0] : e;
+            
             // Calculate new position directly
-            let newX = e.clientX - dragOffsetX;
-            let newY = e.clientY - dragOffsetY;
+            let newX = event.clientX - dragOffsetX;
+            let newY = event.clientY - dragOffsetY;
             
             // Keep window within viewport bounds
             const windowRect = activeWindow.getBoundingClientRect();
@@ -206,10 +212,15 @@ You can type stuff here!</textarea>
             activeWindow.style.top = newY + 'px';
         }
 
-        // Add event listeners
+        // Add event listeners for both mouse and touch
         document.addEventListener('mousedown', dragStart);
         document.addEventListener('mouseup', dragEnd);
         document.addEventListener('mousemove', drag);
+        
+        // Touch event listeners for mobile
+        document.addEventListener('touchstart', dragStart, { passive: false });
+        document.addEventListener('touchend', dragEnd, { passive: false });
+        document.addEventListener('touchmove', drag, { passive: false });
 
         // Close window function
         function closeWindow(windowId) {
@@ -246,7 +257,7 @@ You can type stuff here!</textarea>
         // Menu bar interactions
         document.querySelectorAll('.menu-item').forEach(item => {
             item.addEventListener('click', function() {
-                if (this.textContent === '') {
+                if (this.classList.contains('apple-menu')) {
                     openWindow('about-window');
                 }
             });
@@ -258,6 +269,13 @@ You can type stuff here!</textarea>
                 e.preventDefault();
             }
         });
+
+        // Prevent zoom on double tap for mobile
+        document.addEventListener('touchend', function(e) {
+            if (e.target.closest('.desktop-icon') || e.target.closest('.mac-window')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
 
         // Add Classic Mac OS style animations
         window.addEventListener('load', function() {
@@ -275,6 +293,15 @@ You can type stuff here!</textarea>
         // Add window focus effect
         document.querySelectorAll('.mac-window').forEach(window => {
             window.addEventListener('mousedown', function() {
+                // Bring window to front
+                this.style.zIndex = '1000';
+                document.querySelectorAll('.mac-window').forEach(w => {
+                    if (w !== this) w.style.zIndex = '100';
+                });
+            });
+            
+            // Touch support for window focus
+            window.addEventListener('touchstart', function() {
                 // Bring window to front
                 this.style.zIndex = '1000';
                 document.querySelectorAll('.mac-window').forEach(w => {

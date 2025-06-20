@@ -447,8 +447,232 @@ p {
 }
 
 /* Remove responsive changes for fixed retro layout */
-@media (max-width: 768px) {}
-@media (max-width: 480px) {}
+@media (max-width: 768px) {
+    /* Mobile menu bar adjustments */
+    .menu-bar {
+        height: 32px;
+        font-size: 16px;
+        padding: 0 8px;
+    }
+    
+    .menu-item {
+        margin-right: 12px;
+        padding: 4px 8px;
+    }
+    
+    .apple-menu {
+        font-size: 20px;
+    }
+    
+    .time {
+        font-size: 16px;
+    }
+    
+    /* Mobile desktop icons */
+    .desktop-icon {
+        width: 80px;
+        height: 90px;
+        font-size: 11px;
+        padding: 6px;
+    }
+    
+    .desktop-icon img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 6px;
+    }
+    
+    /* Adjust icon positions for mobile */
+    .icon-finder { top: 50px; right: 15px; }
+    .icon-safari { top: 160px; right: 15px; }
+    .icon-mail { top: 270px; right: 15px; }
+    .icon-itunes { top: 380px; right: 15px; }
+    .icon-photoshop { top: 50px; right: 110px; }
+    .icon-terminal { top: 160px; right: 110px; }
+    .icon-xcode { top: 270px; right: 110px; }
+    .icon-github { top: 380px; right: 110px; }
+    .icon-notes { top: 50px; right: 205px; }
+    
+    /* Mobile windows */
+    .mac-window {
+        min-width: 300px;
+        min-height: 200px;
+        max-width: 90vw;
+        max-height: 80vh;
+    }
+    
+    .window-titlebar {
+        height: 28px;
+        font-size: 14px;
+    }
+    
+    .window-control {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .window-title {
+        font-size: 14px;
+    }
+    
+    .window-content {
+        padding: 12px;
+    }
+    
+    /* Mobile about window adjustments */
+    .about-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .about-left-pane {
+        text-align: center;
+    }
+    
+    .profile-avatar {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .profile-name {
+        font-size: 18px;
+        text-align: center;
+    }
+    
+    .profile-title {
+        font-size: 14px;
+        text-align: center;
+    }
+    
+    /* Mobile watermark */
+    .watermark {
+        font-size: 12px;
+        padding: 6px 10px;
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    /* Mobile notes window */
+    .notes-window {
+        width: 300px;
+        height: 200px;
+    }
+    
+    .notes-textarea {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Small mobile adjustments */
+    .menu-bar {
+        height: 36px;
+        font-size: 18px;
+    }
+    
+    .menu-item {
+        margin-right: 8px;
+        padding: 6px 10px;
+    }
+    
+    .desktop-icon {
+        width: 70px;
+        height: 80px;
+        font-size: 10px;
+    }
+    
+    .desktop-icon img {
+        width: 36px;
+        height: 36px;
+    }
+    
+    /* Stack icons vertically on very small screens */
+    .icon-finder { top: 60px; right: 10px; }
+    .icon-safari { top: 160px; right: 10px; }
+    .icon-mail { top: 260px; right: 10px; }
+    .icon-itunes { top: 360px; right: 10px; }
+    .icon-photoshop { top: 60px; right: 95px; }
+    .icon-terminal { top: 160px; right: 95px; }
+    .icon-xcode { top: 260px; right: 95px; }
+    .icon-github { top: 360px; right: 95px; }
+    .icon-notes { top: 60px; right: 180px; }
+    
+    .mac-window {
+        min-width: 280px;
+        min-height: 180px;
+        max-width: 95vw;
+        max-height: 85vh;
+    }
+    
+    .window-titlebar {
+        height: 32px;
+    }
+    
+    .window-control {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .profile-avatar {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .notes-window {
+        width: 280px;
+        height: 180px;
+    }
+    
+    .watermark {
+        font-size: 11px;
+        padding: 5px 8px;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+/* Touch-friendly interactions */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch targets */
+    .desktop-icon {
+        min-height: 44px;
+        padding: 8px;
+    }
+    
+    .window-control {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    .menu-item {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .info-item {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    
+    /* Disable hover effects on touch devices */
+    .desktop-icon:hover span {
+        background: transparent;
+        color: var(--mac-black);
+    }
+    
+    .menu-item:hover {
+        background: transparent;
+        color: var(--mac-black);
+        border: 1px solid transparent;
+    }
+    
+    .info-item:hover {
+        background: transparent;
+        color: var(--mac-black);
+    }
+}
 
 a:focus,
 button:focus,
