@@ -43,6 +43,9 @@ html {
     overflow: hidden;
     height: 100%;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 body {
@@ -55,12 +58,17 @@ body {
     overflow: hidden;
     cursor: default;
     min-height: 100vh;
-    position: relative;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
     user-select: none;
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
     image-rendering: pixelated;
     -webkit-overflow-scrolling: touch;
+    touch-action: none;
 }
 
 /* Desktop Icons */
@@ -361,6 +369,16 @@ body {
     color: var(--mac-black);
     z-index: 1000;
     box-shadow: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.menu-bar::-webkit-scrollbar {
+    display: none;
 }
 
 .menu-item {
@@ -464,16 +482,6 @@ p {
         height: 32px;
         font-size: 16px;
         padding: 0 8px;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-    
-    .menu-bar::-webkit-scrollbar {
-        display: none;
     }
     
     .menu-item {
@@ -616,16 +624,6 @@ p {
     .menu-bar {
         height: 36px;
         font-size: 18px;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-    
-    .menu-bar::-webkit-scrollbar {
-        display: none;
     }
     
     .menu-item {

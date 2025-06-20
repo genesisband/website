@@ -486,6 +486,35 @@ You can type stuff here!</textarea>
 
         setInterval(updateClock, 1000);
         updateClock(); // Initial call
+
+        // Prevent all scrolling on desktop
+        document.addEventListener('touchmove', function(e) {
+            // Allow scrolling only in specific elements
+            if (e.target.closest('.notes-textarea') || 
+                e.target.closest('.menu-bar') || 
+                e.target.closest('.window-content')) {
+                return;
+            }
+            // Prevent scrolling on desktop background
+            e.preventDefault();
+        }, { passive: false });
+        
+        document.addEventListener('scroll', function(e) {
+            // Prevent any scrolling
+            e.preventDefault();
+            window.scrollTo(0, 0);
+        }, { passive: false });
+        
+        // Prevent wheel scrolling
+        document.addEventListener('wheel', function(e) {
+            // Allow scrolling only in specific elements
+            if (e.target.closest('.notes-textarea') || 
+                e.target.closest('.window-content')) {
+                return;
+            }
+            // Prevent scrolling on desktop background
+            e.preventDefault();
+        }, { passive: false });
     </script>
 </body>
 </html> 
