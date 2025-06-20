@@ -83,6 +83,11 @@
         <span>GitHub</span>
     </div>
 
+    <div class="desktop-icon icon-notes" ondblclick="openWindow('notes-window')">
+        <img src="placeholder.png" alt="Notes">
+        <span>Notes</span>
+    </div>
+
     <!-- About Me Window -->
     <div class="mac-window about-window" id="about-window">
         <div class="window-titlebar" id="window-titlebar">
@@ -117,6 +122,19 @@
                     </a>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Notes Window -->
+    <div class="mac-window notes-window" id="notes-window">
+        <div class="window-titlebar" id="notes-titlebar">
+            <div class="window-controls">
+                <div class="window-control close" onclick="closeWindow('notes-window')"></div>
+            </div>
+            <div class="window-title">Notes</div>
+        </div>
+        <div class="window-content">
+            <textarea class="notes-textarea">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
         </div>
     </div>
 
@@ -197,6 +215,19 @@
             }
         }
 
+        // Open window function
+        function openWindow(windowId) {
+            const window = document.getElementById(windowId);
+            if (window) {
+                window.style.display = 'block';
+                // Bring window to front
+                window.style.zIndex = '1001';
+                document.querySelectorAll('.mac-window').forEach(w => {
+                    if (w.id !== windowId) w.style.zIndex = '100';
+                });
+            }
+        }
+
         // Desktop icon click effects
         document.querySelectorAll('.desktop-icon').forEach(icon => {
             icon.addEventListener('click', function() {
@@ -226,16 +257,19 @@
 
         // Add Classic Mac OS style animations
         window.addEventListener('load', function() {
+            // Center the "About" window on load
             const aboutWindow = document.getElementById('about-window');
-            
-            // Center the window on load
-            const windowWidth = 520;
-            const windowHeight = 320;
-            const centerX = (window.innerWidth - windowWidth) / 2;
-            const centerY = (window.innerHeight - windowHeight) / 2;
-            
-            aboutWindow.style.left = centerX + 'px';
-            aboutWindow.style.top = centerY + 'px';
+            const aboutWidth = 520;
+            const aboutHeight = 320;
+            const aboutCenterX = (window.innerWidth - aboutWidth) / 2;
+            const aboutCenterY = (window.innerHeight - aboutHeight) / 2;
+            aboutWindow.style.left = aboutCenterX + 'px';
+            aboutWindow.style.top = aboutCenterY + 'px';
+
+            // Position the "Notes" window on load
+            const notesWindow = document.getElementById('notes-window');
+            notesWindow.style.left = (aboutCenterX + 40) + 'px';
+            notesWindow.style.top = (aboutCenterY + 40) + 'px';
         });
 
         // Add window focus effect

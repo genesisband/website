@@ -117,6 +117,7 @@ body {
 .icon-terminal { top: 160px; right: 130px; }
 .icon-xcode { top: 280px; right: 130px; }
 .icon-github { top: 400px; right: 130px; }
+.icon-notes { top: 40px; right: 240px; }
 
 /* Classic Mac OS Window */
 .mac-window {
@@ -198,6 +199,28 @@ body {
     left: 100px;
     width: 520px;
     height: 320px;
+}
+
+.notes-window {
+    width: 350px;
+    height: 250px;
+}
+
+.notes-textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    font-family: var(--font-mac-pixel);
+    font-size: 12px;
+    color: var(--mac-black);
+    resize: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notes-textarea:focus {
+    outline: none;
 }
 
 .about-content {
@@ -424,4 +447,27 @@ body {
 
 a, button, .classic-button, .desktop-icon, .info-item {
     transition: none;
+}
+
+/* Notes Window */
+.notes-window {
+    width: 350px;
+    height: 250px;
+}
+
+.notes-textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    font-family: var(--font-mac-pixel);
+    font-size: 12px;
+    color: var(--mac-black);
+    resize: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notes-textarea:focus {
+    outline: none;
 } 
