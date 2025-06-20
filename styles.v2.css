@@ -224,34 +224,24 @@ body {
 }
 
 .about-content {
-    display: block;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 15px;
     height: 100%;
 }
 
-.profile-section {
-    text-align: left;
+.about-right-pane {
     display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid var(--mac-black);
-    padding-bottom: 15px;
+    flex-direction: column;
 }
 
 .profile-avatar {
-    width: 64px;
-    height: 64px;
+    width: 100%;
+    height: 100%;
     border: 2px solid var(--mac-black);
-    background: var(--mac-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    font-size: 40px;
-    color: var(--mac-black);
-    font-weight: 400;
     box-shadow: none;
-    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 0;
 }
 
 .profile-name {
@@ -264,13 +254,14 @@ body {
 .profile-title {
     font-size: 12px;
     color: var(--mac-black);
-    margin-bottom: 0;
+    margin-bottom: 15px;
 }
 
 .info-section {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: auto;
 }
 
 .info-item {
@@ -308,6 +299,14 @@ body {
 .info-text {
     font-size: 12px;
     font-weight: 400;
+}
+
+.info-item .info-text {
+    margin-left: 34px; /* Default margin for items with icons */
+}
+
+.info-item:has(> .info-text:only-child) .info-text {
+    margin-left: 0; /* No margin if there's no icon */
 }
 
 /* Menu Bar */
