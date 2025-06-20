@@ -213,7 +213,13 @@ You can type stuff here!</textarea>
             let newX = event.clientX - dragOffsetX;
             let newY = event.clientY - dragOffsetY;
             
-            // No bounding: allow windows to be dragged off screen
+            // Prevent dragging above the menu bar
+            const menuBarHeight = document.querySelector('.menu-bar').offsetHeight;
+            if (newY < menuBarHeight) {
+                newY = menuBarHeight;
+            }
+            
+            // Allow windows to be dragged off screen in other directions
             activeWindow.style.left = newX + 'px';
             activeWindow.style.top = newY + 'px';
         }

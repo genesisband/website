@@ -644,20 +644,40 @@ p {
 
 /* Touch-friendly interactions */
 @media (hover: none) and (pointer: coarse) {
-    /* Mobile devices with touch - force small close button */
+    /* Mobile devices with touch - force small close button with larger hitbox */
     .window-control {
         width: 8px !important;
         height: 8px !important;
         border-width: 1px !important;
         border-radius: 0 !important;
+        padding: 8px !important;
+        margin: -8px !important;
+        position: relative !important;
+        min-width: 24px !important;
+        min-height: 24px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .window-control::after {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+        background: transparent;
+        border-radius: 0;
     }
     
     .window-control.close:active::before {
         width: 4px !important;
         height: 4px !important;
-        top: 2px !important;
-        left: 2px !important;
-        transform: none !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        position: absolute !important;
     }
     
     /* Increase touch targets */
