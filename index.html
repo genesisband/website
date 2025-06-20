@@ -197,15 +197,21 @@ You can type stuff here!</textarea>
             let newX = event.clientX - dragOffsetX;
             let newY = event.clientY - dragOffsetY;
             
-            // Keep window within viewport bounds
-            const windowRect = activeWindow.getBoundingClientRect();
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
+            // Check if this is a touch device
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
             
-            if (newX < 0) newX = 0;
-            if (newY < 22) newY = 22; // Account for menu bar
-            if (newX + windowRect.width > viewportWidth) newX = viewportWidth - windowRect.width;
-            if (newY + windowRect.height > viewportHeight) newY = viewportHeight - windowRect.height;
+            // Only apply viewport bounds on desktop (not mobile)
+            if (!isTouchDevice) {
+                // Keep window within viewport bounds for desktop
+                const windowRect = activeWindow.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+                
+                if (newX < 0) newX = 0;
+                if (newY < 22) newY = 22; // Account for menu bar
+                if (newX + windowRect.width > viewportWidth) newX = viewportWidth - windowRect.width;
+                if (newY + windowRect.height > viewportHeight) newY = viewportHeight - windowRect.height;
+            }
             
             // Apply position immediately
             activeWindow.style.left = newX + 'px';
@@ -272,6 +278,12 @@ You can type stuff here!</textarea>
 
         // Prevent zoom on double tap for mobile
         document.addEventListener('touchend', function(e) {
+            // Allow textarea interaction
+            if (e.target.closest('.notes-textarea')) {
+                return;
+            }
+            
+            // Prevent zoom on other interactive elements
             if (e.target.closest('.desktop-icon') || e.target.closest('.mac-window')) {
                 e.preventDefault();
             }
