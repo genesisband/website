@@ -689,6 +689,7 @@ p {
         border-width: 1px !important;
         border-radius: 0 !important;
         background: transparent !important;
+        box-shadow: 0 0 0 1px var(--mac-white) !important;
         padding: 9px !important;
         margin: -9px !important;
         position: relative !important;
