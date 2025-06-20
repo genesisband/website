@@ -682,6 +682,11 @@ p {
 
 /* Touch-friendly interactions */
 @media (hover: none) and (pointer: coarse) {
+    /* Adjust window controls positioning for mobile */
+    .window-controls {
+        left: 8px;
+    }
+    
     /* Mobile devices with touch - close button sized to match 6-line pattern with invisible touch area */
     .window-control {
         width: 10px !important;
