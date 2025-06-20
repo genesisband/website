@@ -682,19 +682,19 @@ p {
 
 /* Touch-friendly interactions */
 @media (hover: none) and (pointer: coarse) {
-    /* Mobile devices with touch - smaller close button with transparent background */
+    /* Mobile devices with touch - close button sized to match 6-line pattern with invisible touch area */
     .window-control {
-        width: 6px !important;
-        height: 6px !important;
-        border-width: 1px !important;
+        width: 10px !important;
+        height: 10px !important;
+        border: 1px solid var(--mac-black) !important;
         border-radius: 0 !important;
-        background: transparent !important;
+        background: var(--mac-white) !important;
         box-shadow: 0 0 0 1px var(--mac-white) !important;
-        padding: 9px !important;
-        margin: -9px !important;
+        padding: 6px !important;
+        margin: -6px !important;
         position: relative !important;
-        min-width: 24px !important;
-        min-height: 24px !important;
+        min-width: auto !important;
+        min-height: auto !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -703,17 +703,17 @@ p {
     .window-control::after {
         content: '';
         position: absolute;
-        top: -9px;
-        left: -9px;
-        right: -9px;
-        bottom: -9px;
+        top: -6px;
+        left: -6px;
+        right: -6px;
+        bottom: -6px;
         background: transparent;
         border-radius: 0;
     }
     
     .window-control.close:active::before {
-        width: 3px !important;
-        height: 3px !important;
+        width: 4px !important;
+        height: 4px !important;
         top: 50% !important;
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
