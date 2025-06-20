@@ -508,22 +508,27 @@ p {
     .icon-github { top: 300px; right: 95px; }
     .icon-notes { top: 45px; right: 180px; }
     
-    /* Proportional close window button - scalable square */
+    /* Proportional close window button - viewport-scaled square */
     .window-control {
-        width: 1.2em;
-        height: 1.2em;
-        min-width: 0.9em;
-        min-height: 0.9em;
-        max-width: 1.5em;
-        max-height: 1.5em;
+        width: 2.5vw;
+        height: 2.5vw;
+        min-width: 8px;
+        min-height: 8px;
+        max-width: 14px;
+        max-height: 14px;
         border-radius: 0;
-        border-width: 2px;
+        border-width: 1px;
     }
     .window-control.close:active::before {
-        width: 0.6em;
-        height: 0.6em;
-        top: 0.3em;
-        left: 0.3em;
+        width: 1.2vw;
+        height: 1.2vw;
+        min-width: 4px;
+        min-height: 4px;
+        max-width: 6px;
+        max-height: 6px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
     .window-titlebar {
         height: 2em;
@@ -568,22 +573,27 @@ p {
         margin-bottom: 6px;
     }
     
-    /* Even smaller close window button for small mobile - scalable square */
+    /* Even smaller close window button for small mobile - viewport-scaled square */
     .window-control {
-        width: 1em;
-        height: 1em;
-        min-width: 0.7em;
-        min-height: 0.7em;
-        max-width: 1.2em;
-        max-height: 1.2em;
+        width: 3vw;
+        height: 3vw;
+        min-width: 6px;
+        min-height: 6px;
+        max-width: 12px;
+        max-height: 12px;
         border-radius: 0;
-        border-width: 2px;
+        border-width: 1px;
     }
     .window-control.close:active::before {
-        width: 0.5em;
-        height: 0.5em;
-        top: 0.25em;
-        left: 0.25em;
+        width: 1.5vw;
+        height: 1.5vw;
+        min-width: 3px;
+        min-height: 3px;
+        max-width: 5px;
+        max-height: 5px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
     .window-titlebar {
         height: 1.7em;
