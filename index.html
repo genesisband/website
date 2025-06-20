@@ -211,23 +211,7 @@ You can type stuff here!</textarea>
             let newX = event.clientX - dragOffsetX;
             let newY = event.clientY - dragOffsetY;
             
-            // Check if this is a touch device
-            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-            
-            // Only apply viewport bounds on desktop (not mobile)
-            if (!isTouchDevice) {
-                // Keep window within viewport bounds for desktop
-                const windowRect = activeWindow.getBoundingClientRect();
-                const viewportWidth = window.innerWidth;
-                const viewportHeight = window.innerHeight;
-                
-                if (newX < 0) newX = 0;
-                if (newY < 22) newY = 22; // Account for menu bar
-                if (newX + windowRect.width > viewportWidth) newX = viewportWidth - windowRect.width;
-                if (newY + windowRect.height > viewportHeight) newY = viewportHeight - windowRect.height;
-            }
-            
-            // Apply position immediately
+            // No bounding: allow windows to be dragged off screen
             activeWindow.style.left = newX + 'px';
             activeWindow.style.top = newY + 'px';
         }
