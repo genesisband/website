@@ -508,24 +508,24 @@ p {
     .icon-github { top: 300px; right: 95px; }
     .icon-notes { top: 45px; right: 180px; }
     
-    /* Proportional close window button - viewport-scaled square */
+    /* Proportional close window button - smaller viewport-scaled square */
     .window-control {
-        width: 2.5vw;
-        height: 2.5vw;
-        min-width: 8px;
-        min-height: 8px;
-        max-width: 14px;
-        max-height: 14px;
+        width: 1.8vw;
+        height: 1.8vw;
+        min-width: 6px;
+        min-height: 6px;
+        max-width: 10px;
+        max-height: 10px;
         border-radius: 0;
         border-width: 1px;
     }
     .window-control.close:active::before {
-        width: 1.2vw;
-        height: 1.2vw;
-        min-width: 4px;
-        min-height: 4px;
-        max-width: 6px;
-        max-height: 6px;
+        width: 0.8vw;
+        height: 0.8vw;
+        min-width: 3px;
+        min-height: 3px;
+        max-width: 4px;
+        max-height: 4px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -573,24 +573,24 @@ p {
         margin-bottom: 6px;
     }
     
-    /* Even smaller close window button for small mobile - viewport-scaled square */
+    /* Even smaller close window button for small mobile - smaller viewport-scaled square */
     .window-control {
-        width: 3vw;
-        height: 3vw;
-        min-width: 6px;
-        min-height: 6px;
-        max-width: 12px;
-        max-height: 12px;
+        width: 2vw;
+        height: 2vw;
+        min-width: 5px;
+        min-height: 5px;
+        max-width: 8px;
+        max-height: 8px;
         border-radius: 0;
         border-width: 1px;
     }
     .window-control.close:active::before {
-        width: 1.5vw;
-        height: 1.5vw;
-        min-width: 3px;
-        min-height: 3px;
-        max-width: 5px;
-        max-height: 5px;
+        width: 1vw;
+        height: 1vw;
+        min-width: 2px;
+        min-height: 2px;
+        max-width: 3px;
+        max-height: 3px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
