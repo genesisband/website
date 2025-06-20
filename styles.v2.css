@@ -196,6 +196,11 @@ body {
     overflow: auto;
 }
 
+.notes-window .window-content {
+    overflow: hidden;
+    padding: 0;
+}
+
 /* About Me Window */
 .about-window {
     top: 100px;
@@ -218,12 +223,29 @@ body {
     font-size: 12px;
     color: var(--mac-black);
     resize: none;
-    padding: 0;
+    padding: 10px;
     margin: 0;
 }
 
 .notes-textarea:focus {
     outline: none;
+}
+
+.notes-textarea::-webkit-scrollbar {
+    width: 16px;
+    background: var(--mac-white);
+    border-left: 2px solid var(--mac-black);
+}
+
+.notes-textarea::-webkit-scrollbar-track {
+    background-image: repeating-conic-gradient(from 0deg, #ccc 0% 25%, var(--mac-white) 25% 50%);
+    background-size: 4px 4px;
+}
+
+.notes-textarea::-webkit-scrollbar-thumb {
+    background: var(--mac-white);
+    border: 2px solid var(--mac-black);
+    box-shadow: none;
 }
 
 .about-content {
