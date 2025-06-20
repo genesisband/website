@@ -187,15 +187,14 @@
             let newY = e.clientY - dragOffsetY;
             
             // Keep window within viewport bounds
-            const windowWidth = 520;
-            const windowHeight = 320;
+            const windowRect = activeWindow.getBoundingClientRect();
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
             
             if (newX < 0) newX = 0;
             if (newY < 22) newY = 22; // Account for menu bar
-            if (newX + windowWidth > viewportWidth) newX = viewportWidth - windowWidth;
-            if (newY + windowHeight > viewportHeight) newY = viewportHeight - windowHeight;
+            if (newX + windowRect.width > viewportWidth) newX = viewportWidth - windowRect.width;
+            if (newY + windowRect.height > viewportHeight) newY = viewportHeight - windowRect.height;
             
             // Apply position immediately
             activeWindow.style.left = newX + 'px';
@@ -242,8 +241,8 @@
         // Menu bar interactions
         document.querySelectorAll('.menu-item').forEach(item => {
             item.addEventListener('click', function() {
-                if (this.textContent === '🍎') {
-                    alert('Apple Menu - This would open the Apple menu in Classic Mac OS!');
+                if (this.textContent === '') {
+                    openWindow('about-window');
                 }
             });
         });
@@ -257,19 +256,15 @@
 
         // Add Classic Mac OS style animations
         window.addEventListener('load', function() {
-            // Center the "About" window on load
+            // Position the "About" window on load
             const aboutWindow = document.getElementById('about-window');
-            const aboutWidth = 520;
-            const aboutHeight = 320;
-            const aboutCenterX = (window.innerWidth - aboutWidth) / 2;
-            const aboutCenterY = (window.innerHeight - aboutHeight) / 2;
-            aboutWindow.style.left = aboutCenterX + 'px';
-            aboutWindow.style.top = aboutCenterY + 'px';
+            aboutWindow.style.left = '10vw';
+            aboutWindow.style.top = '15vh';
 
             // Position the "Notes" window on load
             const notesWindow = document.getElementById('notes-window');
-            notesWindow.style.left = (aboutCenterX + 40) + 'px';
-            notesWindow.style.top = (aboutCenterY + 40) + 'px';
+            notesWindow.style.left = 'calc(60vw - 350px)'; // 90% from left edge minus window width
+            notesWindow.style.top = '40vh';
         });
 
         // Add window focus effect
