@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#c0c0c0" stroke="#808080" stroke-width="1"/>
+  
+  <!-- Border effect -->
+  <rect x="1" y="1" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="1"/>
+  <rect x="2" y="2" width="28" height="28" fill="none" stroke="#404040" stroke-width="1"/>
+  
+  <!-- Text background -->
+  <rect x="4" y="4" width="24" height="24" fill="#000080"/>
+  
+  <!-- WZ Text -->
+  <text x="16" y="18" font-family="VT323, monospace" font-size="16" font-weight="bold" text-anchor="middle" fill="#ffffff">WZ</text>
+</svg> 
