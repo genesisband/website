@@ -457,21 +457,23 @@ You can type stuff here!</textarea>
             // Notes window
             const notesWindow = document.getElementById('notes-window');
             if (isMobile) {
-                notesWindow.style.left = '50vw'; // midpoint
-                notesWindow.style.top  = '28vh';
+                // Swap positions with Pokémon window
+                notesWindow.style.left = '20vw';
+                notesWindow.style.top  = '55vh';
             } else {
-                notesWindow.style.left = 'calc(75vw - 350px)';
-                notesWindow.style.top  = '35vh';
+                notesWindow.style.left = 'calc(45vw - 200px)';
+                notesWindow.style.top  = '66vh';
             }
 
             // Pokémon window
             const pokemonWindow = document.getElementById('pokemon-window');
             if (isMobile) {
-                pokemonWindow.style.left = '20vw';
-                pokemonWindow.style.top  = '55vh';
+                // Swap positions with Notes window
+                pokemonWindow.style.left = '50vw';
+                pokemonWindow.style.top  = '28vh';
             } else {
-                pokemonWindow.style.left = 'calc(45vw - 200px)';
-                pokemonWindow.style.top  = '66vh';
+                pokemonWindow.style.left = 'calc(75vw - 350px)';
+                pokemonWindow.style.top  = '35vh';
             }
 
             openWindow('pokemon-window');
