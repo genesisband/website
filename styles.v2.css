@@ -611,6 +611,16 @@ p {
         width: 48px;
         height: 48px;
     }
+    /* Stack avatar on top in About window */
+    .about-content {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto !important;
+    }
+    .about-left-pane {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 8px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -698,6 +708,13 @@ p {
         width: 100%;
         height: auto;
     }
+    /* same stacking rules */
+    .about-content {
+        grid-template-columns: 1fr !important;
+    }
+    .about-left-pane {
+        margin-bottom: 6px;
+    }
 }
 
 /* Extra small mobile devices */
@@ -751,6 +768,13 @@ p {
     .profile-avatar {
         width: 100%;
         height: auto;
+    }
+    /* same stacking */
+    .about-content {
+        grid-template-columns: 1fr !important;
+    }
+    .about-left-pane {
+        margin-bottom: 5px;
     }
 }
 
