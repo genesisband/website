@@ -685,6 +685,15 @@ p {
         width: 40px;
         height: 40px;
     }
+    /* Constrain window width for small mobile */
+    .mac-window {
+        width: 85vw !important;
+        min-width: 0 !important;
+        max-width: 90vw;
+    }
+    .window-content {
+        max-height: 70vh;
+    }
 }
 
 /* Extra small mobile devices */
@@ -728,6 +737,12 @@ p {
     .spotify-icon {
         width: 30px;
         height: 30px;
+    }
+    /* Constrain window width for extra-small mobile */
+    .mac-window {
+        width: 90vw !important;
+        min-width: 0 !important;
+        max-width: 95vw;
     }
 }
 
