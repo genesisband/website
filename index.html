@@ -170,6 +170,14 @@ You can type stuff here!</textarea>
         let activeWindow = null;
         let dragOffsetX = 0;
         let dragOffsetY = 0;
+        let wireframe = null;
+        // Global z-index counter so we only elevate the clicked/opened window
+        let zCounter = 1000;
+
+        function bringToFront(win) {
+            zCounter += 1;
+            win.style.zIndex = zCounter;
+        }
 
         function dragStart(e) {
             // Handle both mouse and touch events
@@ -274,11 +282,7 @@ You can type stuff here!</textarea>
             const window = document.getElementById(windowId);
             if (window) {
                 window.style.display = 'block';
-                // Bring window to front
-                window.style.zIndex = '1001';
-                document.querySelectorAll('.mac-window').forEach(w => {
-                    if (w.id !== windowId) w.style.zIndex = '100';
-                });
+                bringToFront(window);
             }
         }
 
@@ -485,20 +489,12 @@ You can type stuff here!</textarea>
         // Add window focus effect
         document.querySelectorAll('.mac-window').forEach(window => {
             window.addEventListener('mousedown', function() {
-                // Bring window to front
-                this.style.zIndex = '1000';
-                document.querySelectorAll('.mac-window').forEach(w => {
-                    if (w !== this) w.style.zIndex = '100';
-                });
+                bringToFront(this);
             });
             
-            // Touch support for window focus
+            // Touch support
             window.addEventListener('touchstart', function() {
-                // Bring window to front
-                this.style.zIndex = '1000';
-                document.querySelectorAll('.mac-window').forEach(w => {
-                    if (w !== this) w.style.zIndex = '100';
-                });
+                bringToFront(this);
             });
         });
 
