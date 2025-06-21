@@ -447,20 +447,33 @@ You can type stuff here!</textarea>
 
         // Add Classic Mac OS style animations
         window.addEventListener('load', function() {
-            // Position the "About" window on load
-            const aboutWindow = document.getElementById('about-window');
-            aboutWindow.style.left = '10vw';
-            aboutWindow.style.top = '15vh';
+            const isMobile = window.innerWidth <= 768;
 
-            // Position the "Notes" window on load
+            // About window
+            const aboutWindow = document.getElementById('about-window');
+            aboutWindow.style.left = isMobile ? '5vw' : '10vw';
+            aboutWindow.style.top  = isMobile ? '12vh' : '15vh';
+
+            // Notes window
             const notesWindow = document.getElementById('notes-window');
-            notesWindow.style.left = 'calc(75vw - 350px)'; // 90% from left edge minus window width
-            notesWindow.style.top = '35vh';
-            
-            // Position and open the "Pokémon" window on load
+            if (isMobile) {
+                notesWindow.style.left = '50vw'; // midpoint
+                notesWindow.style.top  = '28vh';
+            } else {
+                notesWindow.style.left = 'calc(75vw - 350px)';
+                notesWindow.style.top  = '35vh';
+            }
+
+            // Pokémon window
             const pokemonWindow = document.getElementById('pokemon-window');
-            pokemonWindow.style.left = 'calc(45vw - 200px)'; // Center-ish position
-            pokemonWindow.style.top = '66vh';
+            if (isMobile) {
+                pokemonWindow.style.left = '20vw';
+                pokemonWindow.style.top  = '55vh';
+            } else {
+                pokemonWindow.style.left = 'calc(45vw - 200px)';
+                pokemonWindow.style.top  = '66vh';
+            }
+
             openWindow('pokemon-window');
         });
 

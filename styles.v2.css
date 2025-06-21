@@ -694,6 +694,10 @@ p {
     .window-content {
         max-height: 70vh;
     }
+    .profile-avatar {
+        width: 100%;
+        height: auto;
+    }
 }
 
 /* Extra small mobile devices */
@@ -743,6 +747,10 @@ p {
         width: 90vw !important;
         min-width: 0 !important;
         max-width: 95vw;
+    }
+    .profile-avatar {
+        width: 100%;
+        height: auto;
     }
 }
 
