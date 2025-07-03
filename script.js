@@ -81,9 +81,9 @@ document.addEventListener('touchmove', drag, { passive: false });
 
 // Close window function
 function closeWindow(windowId) {
-    const window = document.getElementById(windowId);
-    if (window) {
-        window.style.display = 'none';
+    const windowElement = document.getElementById(windowId);
+    if (windowElement) {
+        windowElement.style.display = 'none';
     }
 }
 
@@ -93,9 +93,9 @@ document.querySelectorAll('.window-control.close').forEach(closeBtn => {
     closeBtn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        const window = this.closest('.mac-window');
-        if (window) {
-            closeWindow(window.id);
+        const windowElement = this.closest('.mac-window');
+        if (windowElement) {
+            closeWindow(windowElement.id);
         }
     });
     
@@ -103,19 +103,31 @@ document.querySelectorAll('.window-control.close').forEach(closeBtn => {
     closeBtn.addEventListener('touchstart', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        const window = this.closest('.mac-window');
-        if (window) {
-            closeWindow(window.id);
+        const windowElement = this.closest('.mac-window');
+        if (windowElement) {
+            closeWindow(windowElement.id);
         }
     });
 });
 
 // Open window function
 function openWindow(windowId) {
-    const window = document.getElementById(windowId);
-    if (window) {
-        window.style.display = 'block';
-        bringToFront(window);
+    const windowElement = document.getElementById(windowId);
+    if (windowElement) {
+        windowElement.style.display = 'block';
+        bringToFront(windowElement);
+        
+        // Auto-scroll About window to text on mobile
+        if (windowId === 'about-window' && window.innerWidth <= 768) {
+            setTimeout(() => {
+                const windowContent = windowElement.querySelector('.window-content');
+                const aboutRightPane = windowElement.querySelector('.about-right-pane');
+                if (windowContent && aboutRightPane) {
+                    // Scroll the window content to show the text section
+                    windowContent.scrollTop = aboutRightPane.offsetTop - 20;
+                }
+            }, 100);
+        }
     }
 }
 
@@ -320,13 +332,13 @@ window.addEventListener('load', function() {
 });
 
 // Add window focus effect
-document.querySelectorAll('.mac-window').forEach(window => {
-    window.addEventListener('mousedown', function() {
+document.querySelectorAll('.mac-window').forEach(windowElement => {
+    windowElement.addEventListener('mousedown', function() {
         bringToFront(this);
     });
     
     // Touch support
-    window.addEventListener('touchstart', function() {
+    windowElement.addEventListener('touchstart', function() {
         bringToFront(this);
     });
 });

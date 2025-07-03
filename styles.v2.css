@@ -622,6 +622,12 @@ p {
         justify-content: center;
         margin-bottom: 8px;
     }
+    
+    /* Enable scrolling for About window on mobile */
+    .about-window .window-content {
+        overflow-y: auto;
+        scroll-behavior: smooth;
+    }
 }
 
 @media (max-width: 480px) {
