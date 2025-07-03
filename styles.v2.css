@@ -3,8 +3,8 @@
 
 @font-face {
   font-family: 'Sysfont';
-  src: url('sysfont.woff2') format('woff2'),
-  url('sysfont.woff') format('woff');
+      src: url('assets/sysfont.woff2') format('woff2'),
+         url('assets/sysfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -446,9 +446,8 @@ body {
     border: 1px solid transparent;
 }
 
-.apple-menu {
-    font-weight: 400;
-    font-size: 18px;
+.about-menu {
+    font-weight: bold;
 }
 
 .menu-right {
@@ -540,6 +539,8 @@ p {
         font-size: 16px;
         padding: 0 8px;
     }
+    
+
     
     /* Make app icons and text larger */
     .desktop-icon {
@@ -635,6 +636,8 @@ p {
         height: 36px;
         font-size: 18px;
     }
+    
+
     
     /* Make app icons and text larger for small mobile */
     .desktop-icon {
@@ -753,8 +756,10 @@ p {
         font-size: 10px;
         padding: 4px 6px;
         bottom: 8px;
-        right: 8px;
+        right: 8px ;
     }
+    
+
     .spotify-icon {
         width: 30px;
         height: 30px;
