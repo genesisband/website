@@ -117,14 +117,14 @@ function openWindow(windowId) {
         windowElement.style.display = 'block';
         bringToFront(windowElement);
         
-        // Auto-scroll About window to text on mobile
+                        // Auto-scroll About window to text on mobile
         if (windowId === 'about-window' && window.innerWidth <= 768) {
             setTimeout(() => {
                 const windowContent = windowElement.querySelector('.window-content');
-                const aboutRightPane = windowElement.querySelector('.about-right-pane');
-                if (windowContent && aboutRightPane) {
-                    // Scroll the window content to show the text section
-                    windowContent.scrollTop = aboutRightPane.offsetTop - 20;
+                const profileName = windowElement.querySelector('.profile-name');
+                if (windowContent && profileName) {
+                    // Scroll to show the profile name at the top with some padding
+                    windowContent.scrollTop = profileName.offsetTop - 40;
                 }
             }, 100);
         }
